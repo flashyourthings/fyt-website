@@ -4,12 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Hero() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  
   return (
     <div className="relative isolate overflow-hidden">
       {/* Background image with blur */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/robot-hero.webp"
+          src={`${basePath}/images/robot-hero.webp`}
           alt=""
           fill
           className="object-cover"

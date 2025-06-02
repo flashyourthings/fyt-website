@@ -3,31 +3,32 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 
-const operatingSystems = [
-  {
-    name: 'balenaOS',
-    logo: '/images/balena-logo.png',
-    description: 'Container-based OS designed for IoT devices'
-  },
-  {
-    name: 'Ubuntu Core',
-    logo: '/images/ubuntu-logo.svg',
-    description: 'Secure and minimal OS for IoT devices'
-  },
-  {
-    name: 'Raspberry Pi OS',
-    logo: '/images/raspberry-pi-logo.svg',
-    description: 'Optimized OS for Raspberry Pi hardware'
-  },
-  {
-    name: 'Yocto Project',
-    logo: '/images/yocto-logo.svg',
-    description: 'Open source Linux distribution for embedded devices'
-  }
-];
-
 export default function OSCarousel() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const operatingSystems = [
+    {
+      name: 'balenaOS',
+      logo: `${basePath}/images/balena-logo.png`,
+      description: 'Container-based OS designed for IoT devices'
+    },
+    {
+      name: 'Ubuntu Core',
+      logo: `${basePath}/images/ubuntu-logo.svg`,
+      description: 'Secure and minimal OS for IoT devices'
+    },
+    {
+      name: 'Raspberry Pi OS',
+      logo: `${basePath}/images/raspberry-pi-logo.svg`,
+      description: 'Optimized OS for Raspberry Pi hardware'
+    },
+    {
+      name: 'Yocto Project',
+      logo: `${basePath}/images/yocto-logo.svg`,
+      description: 'Open source Linux distribution for embedded devices'
+    }
+  ];
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {

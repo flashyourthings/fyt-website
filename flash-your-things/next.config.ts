@@ -1,22 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
-const config: NextConfig = {
-  output: 'export', // Enables static HTML export
+const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: process.env.PAGES_BASE_PATH,
   images: {
-    unoptimized: true, // Required for static export
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'flashyourthings.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    unoptimized: true,
   },
-  trailingSlash: true, // Adds trailing slashes to URLs
-  reactStrictMode: true,
-  poweredByHeader: false, // Removes X-Powered-By header
-  compress: true, // Enables gzip compression
 };
 
-export default config;
+export default nextConfig;

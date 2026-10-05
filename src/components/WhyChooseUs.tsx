@@ -8,6 +8,7 @@ import {
   BanknotesIcon,
   CircleStackIcon,
 } from '@heroicons/react/24/outline';
+import SectionHeading from './SectionHeading';
 
 const benefits = [
   {
@@ -44,47 +45,39 @@ const benefits = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-24 bg-gray-50 dark:bg-gray-800/50">
+    <section id="why-choose-us" className="bg-gray-50 py-24 sm:py-32 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Why Choose Us
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Expert IoT device provisioning with a focus on quality, speed, and reliability
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Why us"
+          title="Why Choose Us"
+          description="Expert IoT device provisioning with a focus on quality, speed, and reliability"
+        />
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
           {benefits.map((benefit, index) => (
-            <motion.div
+            <motion.li
               key={benefit.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm ring-1 ring-gray-900/5 dark:ring-white/5"
+              transition={{ delay: (index % 3) * 0.1 }}
+              className="card"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 dark:bg-orange-600">
-                  <benefit.icon className="h-6 w-6 text-white" aria-hidden="true" />
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-orange-500/10 dark:bg-orange-500/15">
+                  <benefit.icon className="h-6 w-6 text-orange-600 dark:text-orange-400" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   {benefit.name}
                 </h3>
               </div>
-              <p className="mt-3 text-base leading-7 text-gray-600 dark:text-gray-300">
+              <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                 {benefit.description}
               </p>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
-} 
+}

@@ -1,8 +1,13 @@
-'use client';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const navigation = {
+  main: [
+    { name: 'Services', href: '/#services' },
+    { name: 'Platforms', href: '/#platforms' },
+    { name: 'Process', href: '/#process' },
+    { name: 'About', href: '/#about' },
+    { name: 'Contact', href: '/#contact' },
+  ],
   social: [
     {
       name: 'GitHub',
@@ -35,32 +40,50 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between"
-        >
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} Flash Your Things. All rights reserved.
-          </p>
-
-          <div className="mt-4 sm:mt-0 flex space-x-6">
-            {navigation.social.map((item) => (
+    <footer className="border-t border-gray-900/5 bg-white dark:border-white/10 dark:bg-gray-950">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <Link href="/" className="text-lg font-bold text-orange-500">
+              Flash Your Things
+            </Link>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+              IoT device assembly, flashing, provisioning and logistics.
+            </p>
+          </div>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+            {navigation.main.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                className="text-sm text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="mt-8 flex flex-col-reverse gap-4 border-t border-gray-900/5 pt-8 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            &copy; {new Date().getFullYear()} Flash Your Things. All rights reserved.
+          </p>
+          <div className="flex gap-x-6">
+            {navigation.social.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-200"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-5 w-5" aria-hidden="true" />
-              </Link>
+              </a>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
-} 
+}

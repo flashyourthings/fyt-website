@@ -1,12 +1,13 @@
 'use client';
 import { motion } from 'framer-motion';
-import { 
+import {
   ClockIcon,
   GlobeAltIcon,
   GlobeEuropeAfricaIcon,
   UserGroupIcon,
   CpuChipIcon,
 } from '@heroicons/react/24/outline';
+import SectionHeading from './SectionHeading';
 
 const facts = [
   {
@@ -17,7 +18,7 @@ const facts = [
   },
   {
     stat: '25+',
-    label: 'Devices Types',
+    label: 'Device Types',
     description: 'Supporting a wide range of devices',
     icon: CpuChipIcon,
   },
@@ -31,7 +32,7 @@ const facts = [
     stat: '100%',
     label: 'Client Satisfaction',
     description: 'Excellence in every project',
-    icon:   UserGroupIcon,
+    icon: UserGroupIcon,
   },
   {
     stat: 'UK & EU',
@@ -41,88 +42,78 @@ const facts = [
   },
 ];
 
+const pillars = [
+  {
+    name: 'Engineering Excellence',
+    description:
+      'Our engineering team has architected and implemented IoT solutions across diverse industries, from small-scale prototypes to large enterprise deployments.',
+  },
+  {
+    name: 'Operational Mastery',
+    description:
+      'We understand the complexities of fleet management, having overseen the deployment and maintenance of thousands of devices across global networks.',
+  },
+  {
+    name: 'End-to-End Solutions',
+    description:
+      'From initial concept to ongoing support, we provide comprehensive solutions that ensure your IoT deployment succeeds at every stage.',
+  },
+];
+
 export default function AboutUs() {
   return (
-    <section id="about" className="py-24 bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-0">
-          <div className="lg:pr-8 lg:pt-4">
-            <div className="lg:max-w-lg">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                  Decades of IoT Excellence
-                </h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                  With over 20 years of experience in IoT and fleet deployment, we bring unparalleled expertise to every project.
-                </p>
-                <div className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 dark:text-gray-300">
-                  <div>
-                    <strong className="font-semibold text-gray-900 dark:text-white">
-                      Engineering Excellence
-                    </strong>
-                    <p className="mt-1">
-                      Our engineering team has architected and implemented IoT solutions across diverse industries, 
-                      from small-scale prototypes to large enterprise deployments.
-                    </p>
-                  </div>
-                  <div>
-                    <strong className="font-semibold text-gray-900 dark:text-white">
-                      Operational Mastery
-                    </strong>
-                    <p className="mt-1">
-                      We understand the complexities of fleet management, having overseen the deployment and 
-                      maintenance of thousands of devices across global networks.
-                    </p>
-                  </div>
-                  <div>
-                    <strong className="font-semibold text-gray-900 dark:text-white">
-                      End-to-End Solutions
-                    </strong>
-                    <p className="mt-1">
-                      From initial concept to ongoing support, we provide comprehensive solutions that ensure 
-                      your IoT deployment succeeds at every stage.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          <div className="lg:pl-8 lg:pt-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {facts.map((fact, index) => (
-                <motion.div
-                  key={fact.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="relative bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl shadow-sm ring-1 ring-gray-900/5 dark:ring-white/5"
-                >
-                  <div className="absolute top-4 right-4">
-                    <fact.icon className="h-16 w-16 text-orange-500" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold tracking-tight text-orange-500">
-                      {fact.stat}
-                    </h3>
-                    <p className="mt-1 text-base font-semibold text-gray-900 dark:text-white">
-                      {fact.label}
-                    </p>
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                      {fact.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+    <section id="about" className="py-24 sm:py-32">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-16 gap-y-16 px-6 lg:grid-cols-2 lg:items-start lg:px-8">
+        <div>
+          <SectionHeading
+            align="left"
+            eyebrow="About us"
+            title="Decades of IoT Excellence"
+            description="With over 20 years of experience in IoT and fleet deployment, we bring unparalleled expertise to every project."
+          />
+          <motion.dl
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-10 max-w-xl space-y-8 border-l-2 border-orange-500/30 pl-6 text-base leading-7"
+          >
+            {pillars.map((pillar) => (
+              <div key={pillar.name}>
+                <dt className="font-semibold text-gray-900 dark:text-white">{pillar.name}</dt>
+                <dd className="mt-1 text-gray-600 dark:text-gray-300">{pillar.description}</dd>
+              </div>
+            ))}
+          </motion.dl>
         </div>
+
+        <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {facts.map((fact, index) => (
+            <motion.div
+              key={fact.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`card relative flex flex-col bg-gray-50 dark:bg-white/5 ${
+                index === facts.length - 1 ? 'sm:col-span-2' : ''
+              }`}
+            >
+              <fact.icon className="absolute top-6 right-6 h-8 w-8 text-orange-500/70" aria-hidden="true" />
+              {/* Label comes first for screen readers; the stat is shown first visually */}
+              <dt className="order-2 mt-2 text-base font-semibold text-gray-900 dark:text-white">
+                {fact.label}
+              </dt>
+              <dd className="order-1 pr-12 text-3xl font-bold tracking-tight text-orange-600 dark:text-orange-400">
+                {fact.stat}
+              </dd>
+              <dd className="order-3 mt-1 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                {fact.description}
+              </dd>
+            </motion.div>
+          ))}
+        </dl>
       </div>
     </section>
   );
-} 
+}

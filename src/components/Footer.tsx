@@ -33,34 +33,37 @@ const navigation = {
   ],
 };
 
+const company = [
+  { label: 'Company number', value: '15680962' },
+  { label: 'VAT number', value: 'GB483758149' },
+  { label: 'Registered in', value: 'England and Wales' },
+  {
+    label: 'Registered office',
+    value: 'Unit A, 82 James Carter Road, Mildenhall, Cambridge, IP28 7DE',
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div className="space-y-1 text-xs text-gray-500 dark:text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Flash Your Things Ltd. All rights reserved.</p>
-            <p>
-              Registered in England and Wales, company number 15680962. Registered office: Unit A,
-              82 James Carter Road, Mildenhall, Cambridge, IP28 7DE. VAT number GB483758149.
-            </p>
-            <p>
-              Email:{' '}
-              <a
-                href="mailto:orders@flashyourthings.com"
-                className="underline hover:text-gray-700 dark:hover:text-gray-200"
-              >
-                orders@flashyourthings.com
-              </a>
-            </p>
+    <footer className="border-t border-gray-900/5 bg-white dark:border-white/10 dark:bg-gray-900">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mx-auto max-w-7xl px-6 py-10 lg:px-8"
+      >
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">Flash Your Things Ltd</p>
+            <a
+              href="mailto:orders@flashyourthings.com"
+              className="mt-1 inline-block text-sm text-orange-600 hover:text-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+            >
+              orders@flashyourthings.com
+            </a>
           </div>
 
-          <div className="mt-4 sm:mt-0 flex space-x-6">
+          <div className="flex gap-x-6">
             {navigation.social.map((item) => (
               <Link
                 key={item.name}
@@ -72,8 +75,21 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        <dl className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 border-t border-gray-900/5 pt-8 text-xs sm:grid-cols-2 lg:grid-cols-[auto_auto_auto_1fr] dark:border-white/10">
+          {company.map((item) => (
+            <div key={item.label}>
+              <dt className="text-gray-500 dark:text-gray-400">{item.label}</dt>
+              <dd className="mt-1 text-gray-700 dark:text-gray-200">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <p className="mt-8 text-xs text-gray-500 dark:text-gray-400">
+          &copy; {new Date().getFullYear()} Flash Your Things Ltd. All rights reserved.
+        </p>
+      </motion.div>
     </footer>
   );
-} 
+}

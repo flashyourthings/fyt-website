@@ -43,9 +43,13 @@ export default function Footer() {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between"
         >
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} Flash Your Things. All rights reserved.
-          </p>
+          <div className="space-y-1 text-xs text-gray-500 dark:text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Flash Your Things Ltd. All rights reserved.</p>
+            <p>
+              Registered in England and Wales, company number 15680962. Registered office: Unit A,
+              82 James Carter Road, Mildenhall, Cambridge, IP28 7DE.
+            </p>
+          </div>
 
           <div className="mt-4 sm:mt-0 flex space-x-6">
             {navigation.social.map((item) => (

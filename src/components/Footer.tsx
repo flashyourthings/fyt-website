@@ -39,7 +39,13 @@ const company = [
   { label: 'Registered in', value: 'England and Wales' },
   {
     label: 'Registered office',
-    value: 'Unit A, 82 James Carter Road, Mildenhall, Cambridge, IP28 7DE',
+    value: (
+      <>
+        Unit A, 82 James Carter Road, Mildenhall, Cambridge,{' '}
+        <span className="whitespace-nowrap">IP28 7DE</span>
+      </>
+    ),
+    wide: true,
   },
 ];
 
@@ -77,9 +83,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 border-t border-gray-900/5 pt-8 text-xs sm:grid-cols-2 lg:grid-cols-[auto_auto_auto_1fr] dark:border-white/10">
+        <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-gray-900/5 pt-8 text-xs lg:grid-cols-[auto_auto_auto_1fr] dark:border-white/10">
           {company.map((item) => (
-            <div key={item.label}>
+            <div key={item.label} className={item.wide ? 'col-span-2 lg:col-span-1' : undefined}>
               <dt className="text-gray-500 dark:text-gray-400">{item.label}</dt>
               <dd className="mt-1 text-gray-700 dark:text-gray-200">{item.value}</dd>
             </div>

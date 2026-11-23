@@ -15,8 +15,7 @@ export default function Hero() {
           alt=""
           fill
           className="object-cover"
-          quality={100}
-          priority
+          preload
           style={{ filter: 'blur(8px) brightness(0.4)' }}
         />
       </div>

@@ -47,7 +47,16 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Flash Your Things Ltd. All rights reserved.</p>
             <p>
               Registered in England and Wales, company number 15680962. Registered office: Unit A,
-              82 James Carter Road, Mildenhall, Cambridge, IP28 7DE.
+              82 James Carter Road, Mildenhall, Cambridge, IP28 7DE. VAT number GB483758149.
+            </p>
+            <p>
+              Email:{' '}
+              <a
+                href="mailto:orders@flashyourthings.com"
+                className="underline hover:text-gray-700 dark:hover:text-gray-200"
+              >
+                orders@flashyourthings.com
+              </a>
             </p>
           </div>
 

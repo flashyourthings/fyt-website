@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import posthog from 'posthog-js';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    posthog.capture('contact_form_submitted');
     const subject = `FYT Project Inquiry from ${formData.company}`;
     const body = formData.message;
     window.location.href = `mailto:contact@flashyourthings.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
